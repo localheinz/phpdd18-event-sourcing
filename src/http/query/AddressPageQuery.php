@@ -26,8 +26,11 @@ class AddressPageQuery
         $id = $this->session->getCheckoutId();
         $renderer = new \Slim\Views\PhpRenderer(__DIR__ . '/../templates');
         $data = [
-            'cartItemList' => file_get_contents(__DIR__ . '/../../../var/projections/cart-items_' . $id->asString() . '.html')
+            'action' => '/addBillingAddress',
+            'cartItemList' => file_get_contents(__DIR__ . '/../../../var/projections/cart-items_' . $id->asString() . '.html'),
+            'title' => 'Billing Address',
         ];
+
         return $renderer->render($response, 'address.phtml', $data);
     }
 }
